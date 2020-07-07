@@ -9,7 +9,7 @@ Undertow is a Java web server based on non-blocking IO. It consists of a few dif
 
 Website: http://undertow.io
 
-Issues: https://issues.jboss.org/browse/UNDERTOW
+Issues: https://issues.redhat.com/projects/UNDERTOW/issues/
 
 Project Lead: Flavia Rainone <frainone@redhat.com>
 
