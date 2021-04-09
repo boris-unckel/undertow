@@ -24,6 +24,8 @@
 
 package io.undertow.util;
 
+import static io.undertow.util.Assert.checkNotNullParamWithNullPointerException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Deque;
@@ -330,7 +332,7 @@ public class PortableConcurrentDirectDeque<E>
      * Links e as first element.
      */
     private Node linkFirst(E e) {
-        checkNotNull(e);
+        checkNotNullParamWithNullPointerException("e", e);
         final Node<E> newNode = new Node<>(e);
 
         restartFromHead:
@@ -363,7 +365,7 @@ public class PortableConcurrentDirectDeque<E>
      * Links e as last element.
      */
     private Node linkLast(E e) {
-        checkNotNull(e);
+        checkNotNullParamWithNullPointerException("e", e);
         final Node<E> newNode = new Node<>(e);
 
         restartFromTail:
@@ -769,16 +771,6 @@ public class PortableConcurrentDirectDeque<E>
     // Minor convenience utilities
 
     /**
-     * Throws NullPointerException if argument is null.
-     *
-     * @param v the element
-     */
-    private static void checkNotNull(Object v) {
-        if (v == null)
-            throw new NullPointerException();
-    }
-
-    /**
      * Returns element unless it is null, in which case throws
      * NoSuchElementException.
      *
@@ -827,7 +819,7 @@ public class PortableConcurrentDirectDeque<E>
         // Copy c into a private chain of Nodes
         Node<E> h = null, t = null;
         for (E e : c) {
-            checkNotNull(e);
+            checkNotNullParamWithNullPointerException("e", e);
             Node<E> newNode = new Node<>(e);
             if (h == null)
                 h = t = newNode;
@@ -1054,7 +1046,7 @@ public class PortableConcurrentDirectDeque<E>
      * @throws NullPointerException if the specified element is null
      */
     public boolean removeFirstOccurrence(Object o) {
-        checkNotNull(o);
+        checkNotNullParamWithNullPointerException("o", o);
         for (Node<E> p = first(); p != null; p = succ(p)) {
             E item = p.item;
             if (item != null && o.equals(item) && p.casItem(item, null)) {
@@ -1075,7 +1067,7 @@ public class PortableConcurrentDirectDeque<E>
      * @throws NullPointerException if the specified element is null
      */
     public boolean removeLastOccurrence(Object o) {
-        checkNotNull(o);
+        checkNotNullParamWithNullPointerException("o", o);
         for (Node<E> p = last(); p != null; p = pred(p)) {
             E item = p.item;
             if (item != null && o.equals(item) && p.casItem(item, null)) {
@@ -1171,7 +1163,7 @@ public class PortableConcurrentDirectDeque<E>
         // Copy c into a private chain of Nodes
         Node<E> beginningOfTheEnd = null, last = null;
         for (E e : c) {
-            checkNotNull(e);
+            checkNotNullParamWithNullPointerException("e", e);
             Node<E> newNode = new Node<>(e);
             if (beginningOfTheEnd == null)
                 beginningOfTheEnd = last = newNode;

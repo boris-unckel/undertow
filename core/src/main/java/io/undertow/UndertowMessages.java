@@ -618,4 +618,13 @@ public interface UndertowMessages {
 
     @Message(id = 198, value = "Blocking write timed out after %s nanoseconds.")
     WriteTimeoutException blockingWriteTimedOut(long timeoutNanoseconds);
+
+    @Message(id = 199, value = "Argument %s cannot be null")
+    NullPointerException argumentCannotBeNullNPE(final String argument);
+
+    @Message(id = 200, value = "Array index %d of parameter '%s' cannot be null")
+    IllegalArgumentException nullArrayParam(int index, String name);
+
+    @Message(id = 201, value = "Parameter '%s' must not be empty")
+    IllegalArgumentException emptyParam(String name);
 }

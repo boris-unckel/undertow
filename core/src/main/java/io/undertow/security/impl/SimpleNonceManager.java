@@ -18,6 +18,7 @@
 package io.undertow.security.impl;
 
 import static io.undertow.UndertowMessages.MESSAGES;
+import static io.undertow.util.Assert.checkNotNullParamWithNullPointerException;
 
 import io.undertow.security.api.SessionNonceManager;
 import io.undertow.server.HttpServerExchange;
@@ -429,10 +430,7 @@ public class SimpleNonceManager implements SessionNonceManager {
         private final String nonce;
 
         private NonceHolder(final String nonce) {
-            if (nonce == null) {
-                throw new NullPointerException("nonce must not be null.");
-            }
-            this.nonce = nonce;
+            this.nonce = checkNotNullParamWithNullPointerException("nonce", nonce);
         }
 
         @Override
@@ -511,10 +509,7 @@ public class SimpleNonceManager implements SessionNonceManager {
         private final String nonce;
 
         private InvalidNonceCleaner(final String nonce) {
-            if (nonce == null) {
-                throw new NullPointerException("nonce must not be null.");
-            }
-            this.nonce = nonce;
+            this.nonce = checkNotNullParamWithNullPointerException("nonce", nonce);
         }
 
         public void run() {
@@ -527,10 +522,7 @@ public class SimpleNonceManager implements SessionNonceManager {
         private final String nonce;
 
         private KnownNonceCleaner(final String nonce) {
-            if (nonce == null) {
-                throw new NullPointerException("nonce must not be null.");
-            }
-            this.nonce = nonce;
+            this.nonce = checkNotNullParamWithNullPointerException("nonce", nonce);
         }
 
         public void run() {
